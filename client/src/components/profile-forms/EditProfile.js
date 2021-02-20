@@ -25,7 +25,6 @@ const EditProfile = ({profile: {profile, loading}, getCurrentProfile, createProf
 
   useEffect(() => {
       getCurrentProfile();
-
       setFormData({
           company: loading || !profile.company ? '' : profile.company,
           website: loading || !profile.website ? '' : profile.website,
@@ -40,7 +39,7 @@ const EditProfile = ({profile: {profile, loading}, getCurrentProfile, createProf
           linkedin: loading || !profile.social.linkedin ? '' : profile.social.linkedin,
           instagram: loading || !profile.social.instagram ? '' : profile.social.instagram
       })
-  }, [loading]);
+  }, [loading,getCurrentProfile]);
 
   const {
     company,
@@ -56,7 +55,6 @@ const EditProfile = ({profile: {profile, loading}, getCurrentProfile, createProf
     youtube,
     instagram,
   } = formData;
-
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -66,7 +64,7 @@ const EditProfile = ({profile: {profile, loading}, getCurrentProfile, createProf
   }
   return (
     <Fragment>
-      <nav class='navbar bg-dark'>
+      <nav className='navbar bg-dark'>
         <h1>
           <a href='index.html'>
             <i className='fas fa-code'></i> DevConnector
